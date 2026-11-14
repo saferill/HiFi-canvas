@@ -47,7 +47,10 @@ To maintain high performance and avoid repository bloat:
 To submit a canvas mapping for a track:
 1. Fork this repository.
 2. Add your entry to `v1/canvas.json` using a valid HTTPS video URL (portrait 9:16 aspect ratio preferred, 1080p maximum, under 5 MB).
-3. Open a Pull Request.
+3. Run `python3 scripts/sync-canvas.py --check` to validate the file (the same check runs automatically on your Pull Request).
+4. Open a Pull Request.
+
+Each entry key must be the track's 11-character `videoId`, and `title`, `videoUrl` and `thumbUrl` are all required (`videoUrl` / `thumbUrl` must be `https://`).
 
 ---
 
