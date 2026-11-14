@@ -1,0 +1,28 @@
+name: Validate Canvas Catalog
+
+on:
+  pull_request:
+    paths:
+      - 'v1/**'
+      - 'scripts/**'
+  push:
+    branches: [main]
+    paths:
+      - 'v1/**'
+      - 'scripts/**'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Validate v1/canvas.json
+        run: python3 scripts/sync-canvas.py --check
